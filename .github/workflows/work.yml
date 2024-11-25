@@ -9,6 +9,8 @@ jobs:
           opam-pin: false
       - run: sudo apt-get update
       - run: opam install --depext-only conf-pkg-config conf-libpcre conf-libpcre2-8 conf-gmp conf-libev conf-libcurl
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - run: opam install .
 
 name: work
