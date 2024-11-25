@@ -1,0 +1,13 @@
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: ocaml-variants.4.14.0+options,ocaml-option-musl,ocaml-option-static
+          opam-pin: false
+          opam-disable-sandboxing: true
+      - run: opam install --depext-only conf-pkg-config conf-libpcre conf-libpcre2-8 conf-gmp conf-libev conf-libcurl
+      - run: opam install .
+
